@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity
         ObjectHolder.newsModel.add(model2);*/
 
 
-        String[]keys=new String[]{"mode","state_id","city_id","area_id","l_id","pg_id"};
+        String[]keys=new String[]{"mode","state_id","city_id","area_id","cat_id","subcat_id"};
         String[]values=new String[]{"findpg","1","1","1","9","1"};
         String jsonRequest= Utils.createJsonRequest(keys,values);
 

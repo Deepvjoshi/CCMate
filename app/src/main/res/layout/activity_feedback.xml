@@ -39,6 +39,7 @@
     android:layout_marginTop="190dp"
     />
     <Button
+        android:id="@+id/dj"
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:text="Submit"
