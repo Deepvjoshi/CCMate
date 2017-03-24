@@ -164,7 +164,7 @@ cityspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 {
                     String djs[] = new String[AreaList.size()];
                     for (int i=0;i<AreaList.size();i++){
-                        djs[i]=AreaList.get(i).getCity_name();
+                        djs[i]=AreaList.get(i).getArea_name();
                         Log.d("tag","djj"+djs[i]);
 
                     }
@@ -236,15 +236,15 @@ cityspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 Log.d("myapp","selected area Spinner: "+contactnostr);
 
                 String answerstr = answerET.getText().toString();
-                Integer areaspinnerStr = Integer.valueOf(String.valueOf(areaspinner.getSelectedItem()));
+                String areaspinnerStr = String.valueOf(areaspinner.getSelectedItemId());
                 Log.d("myapp","selected area Spinner: "+areaspinnerStr);
-                String statespinnerStr = String.valueOf(statespinner.getSelectedItem());
+                String statespinnerStr = String.valueOf(statespinner.getSelectedItemId());
                 Log.d("myapp","selected state Spinner: "+statespinnerStr);
-                String cityspinnerStr = String.valueOf(cityspinner.getSelectedItem());
+                String cityspinnerStr = String.valueOf(cityspinner.getSelectedItemId());
                 Log.d("myapp","selected city Spinner: "+cityspinnerStr);
                 String typespinnerStr = String.valueOf(typespinner.getSelectedItem());
                 Log.d("myapp","selected type: "+typespinnerStr);
-                String questionspinnerStr = String.valueOf(questionspinner.getSelectedItem());
+                String questionspinnerStr = String.valueOf(questionspinner.getSelectedItemId());
                 Log.d("myapp","selected state Spinner: "+questionspinnerStr);
 
                 String answer = answerET.getText().toString();
@@ -304,8 +304,8 @@ cityspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     }*/
                     //String jsonRequest = String.valueOf(object);
 
-                    String[] keys = new String[]{"mode", "f_name", "l_name","address","state_id","city_id","area_id","u_name","email","psd","ph_no","u_type","sec_id","ans"};
-                    String[] values = new String[]{"cust_register",fnstr,lnstr,addressstr,statespinnerStr,cityspinnerStr, String.valueOf(areaspinnerStr),unstr,emailstr,passwordstr,contactnostr,typespinnerStr,questionspinnerStr,answerstr};
+                    String[] keys = new String[]{"mode", "f_name", "l_name","address","state_id","city_id","area_id","u_name","email","psd","ph_no","u_type","sec_id","ans","user_profile"};
+                    String[] values = new String[]{"cust_register",fnstr,lnstr,addressstr,statespinnerStr,cityspinnerStr,areaspinnerStr,unstr,emailstr,passwordstr,contactnostr,typespinnerStr,questionspinnerStr,answerstr,"12"};
                     String jsonRequest = Utils.createJsonRequest(keys, values);
                     String URL =  "http://vnurture.in/00findpg/admin/webservice.php";
                     new WebserviceCall(SignUp.this, URL, jsonRequest, "Sending Email", true, new AsyncResponse() {
