@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.khushi.win10.cottageclaiment">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Cottage Claimant"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".SignUp" />
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".RentDetailActivity" />
+        <activity
+            android:name=".SplashActivity"
+            android:noHistory="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ForgotPassActivity" />
+        <activity android:name=".SearchPropertyActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".PropertyNewsActivity" />
+        <activity android:name=".PropertynewsDetailActivity" />
+        <activity android:name=".SettingActivity" />
+        <activity android:name=".FeedbackActivity" />
+        <activity android:name=".SearchByCategoryActivity" />
+        <activity android:name=".SearchByPlaceActivity" />
+        <activity android:name=".SearchByPriceActivity" />
+        <activity android:name=".ManageAccountActivity" />
+        <activity android:name=".ChangePasswordActivity" />
+        <activity android:name=".UpdateAccountActivity"></activity>
+    </application>
+
+</manifest>

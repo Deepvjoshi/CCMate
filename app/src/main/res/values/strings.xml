@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Cottage Claimant</string>
+    <string-array name="name"></string-array>
+    <string-array name="location"></string-array>
+    <string-array name="rating"></string-array>
+    <string-array name="rank"></string-array>
+    <string-array name="price"></string-array>
+    <string-array name="title" />
+
+    <string-array name="Select_State">
+        <item>Select State</item>
+        <item>Gujarat</item>
+        <item> Maharastra</item>
+        <item> Jammu Kashmir</item>
+        <item>Assam </item>
+        <item>MP </item>
+        <item>Goa </item>
+        <item>Keral </item>
+
+
+    </string-array>
+
+    <string-array name="Select_City">
+        <item>Select City</item>
+    </string-array>
+
+    <string-array name="Select_Area">
+        <item>Select Area</item>
+    </string-array>
+
+    <string-array name="Select_Type">
+        <item>Select Type</item>
+        <item>admin</item>
+        <item>user</item>
+    </string-array>
+
+    <string-array name="Select_Question">
+        <item>Select Question</item>
+        <item>What is your pet name?</item>
+        <item>What is your hobby?</item>
+        <item>What is your mother name?</item>
+        <item>What is your favorite color?</item>
+    </string-array>
+
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_property_news">PropertyNewsActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>

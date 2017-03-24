@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_search_property"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.khushi.win10.cottageclaiment.SearchPropertyActivity">
+
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/search_property_location"-->
+        <!--android:textStyle="bold"-->
+        <!--android:hint="Location"/>-->
+    <!--<Spinner-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:id="@+id/data_spinner_bhk"-->
+        <!--android:layout_marginTop="60dp"/>-->
+    <!--<EditText-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="Budget"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_marginTop="120dp"-->
+        <!--android:id="@+id/search_property_budget"/>-->
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/search_property_suitablefor"-->
+        <!--android:layout_marginTop="170dp"-->
+        <!--android:text="Suitable for:"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textSize="19dp"/>-->
+    <!--<RadioGroup-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="210dp">-->
+        <!--<RadioButton-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Family"/>-->
+        <!--<RadioButton-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Single"/>-->
+        <!--<RadioButton-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="HoneyMooners"/>-->
+        <!--<RadioButton-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Adults Only"/>-->
+        <!--<RadioButton-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Groups"/>-->
+    <!--</RadioGroup>-->
+
+    <!--<Button-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="380dp"-->
+        <!--android:text="Search"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:backgroundTint="@color/colorPrimary"/>-->
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="search by category"
+        android:textSize="20dp"
+        android:id="@+id/search_btn_category"
+        android:background="@android:color/transparent"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="60dp"
+        android:background="@android:color/darker_gray"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="search by place"
+        android:layout_marginTop="60dp"
+        android:textSize="20dp"
+        android:id="@+id/search_btn_place"
+        android:background="@android:color/transparent"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="120dp"
+        android:background="@android:color/darker_gray"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="search by price"
+        android:textSize="20dp"
+        android:layout_marginTop="120dp"
+        android:id="@+id/search_btn_price"
+        android:background="@android:color/transparent"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="180dp"
+        android:background="@android:color/darker_gray"/>
+
+
+
+</RelativeLayout>
+</ScrollView>
