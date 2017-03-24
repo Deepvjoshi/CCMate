@@ -139,33 +139,10 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_logout) {
 
-
-
-
-            String[]keys=new String[]{"mode","lg_id"};
-            String[]values=new String[]{"logout","2"};
-            String jsonRequest= Utils.createJsonRequest(keys,values);
-
-            String URL = "http://vnurture.in/00findpg/admin/webservice.php";
-            new WebserviceCall(HomeActivity.this, URL, jsonRequest, "Logging out", true, new AsyncResponse() {
-                @Override
-                public void onCallback(String response) {
-                    Log.d("myapp",response);
-                    LogOutModel model = new Gson().fromJson(response,LogOutModel.class);
-                    Toast.makeText(HomeActivity.this,model.getMessage() , Toast.LENGTH_SHORT).show();
-
-                    if (model.getStatus()==1)
-                    {
-                        Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                    }
-
-                }
-            }).execute();
-
-
-
+            getSharedPreferences("testpref",MODE_PRIVATE).edit().clear().apply();
+            Intent intent = new Intent(HomeActivity.this,LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
 
         }
 
