@@ -7,146 +7,182 @@ package com.khushi.win10.cottageclaiment.Model;
 public class SignUpModel {
 
     /**
-     * mode : cust_register
-     * f_name : nisargm
-     * l_name : merchant
-     * address : abad
-     * state_id : 1
-     * city_id : 2
-     * area_id : 3
-     * ph_no : 9278376466
-     * email : merchantaaaaaa@gmail.com
-     * u_name : nishu
-     * psd : nishu
-     * u_type : user
-     * sec_id : 1
-     * ans : nishu
+     * status : 1
+     * user_details : {"r_id":26,"l_id":16,"f_name":"nisargm","l_name":"merchant","address":"abad","state_name":"Gujarat","city_name":"Surat","area_name":"Navsari","ph_no":"9278376466","email":"merchantaaaaaa@gmail.com","u_name":"nishu","psd":"nishu","sec_id":"What is your pet name ?","ans":"ans"}
+     * message : Customer registration is successfully done.
      */
 
-    private String mode;
-    private String f_name;
-    private String l_name;
-    private String address;
-    private String state_id;
-    private String city_id;
-    private String area_id;
-    private String ph_no;
-    private String email;
-    private String u_name;
-    private String psd;
-    private String u_type;
-    private String sec_id;
-    private String ans;
+    private int status;
+    private UserDetailsBean user_details;
+    private String message;
 
-    public String getMode() {
-        return mode;
+    public int getStatus() {
+        return status;
     }
 
-    public void setMode(String mode) {
-        this.mode = mode;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public String getF_name() {
-        return f_name;
+    public UserDetailsBean getUser_details() {
+        return user_details;
     }
 
-    public void setF_name(String f_name) {
-        this.f_name = f_name;
+    public void setUser_details(UserDetailsBean user_details) {
+        this.user_details = user_details;
     }
 
-    public String getL_name() {
-        return l_name;
+    public String getMessage() {
+        return message;
     }
 
-    public void setL_name(String l_name) {
-        this.l_name = l_name;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public String getAddress() {
-        return address;
-    }
+    public static class UserDetailsBean {
+        /**
+         * r_id : 26
+         * l_id : 16
+         * f_name : nisargm
+         * l_name : merchant
+         * address : abad
+         * state_name : Gujarat
+         * city_name : Surat
+         * area_name : Navsari
+         * ph_no : 9278376466
+         * email : merchantaaaaaa@gmail.com
+         * u_name : nishu
+         * psd : nishu
+         * sec_id : What is your pet name ?
+         * ans : ans
+         */
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+        private int r_id;
+        private int l_id;
+        private String f_name;
+        private String l_name;
+        private String address;
+        private String state_name;
+        private String city_name;
+        private String area_name;
+        private String ph_no;
+        private String email;
+        private String u_name;
+        private String psd;
+        private String sec_id;
+        private String ans;
 
-    public String getState_id() {
-        return state_id;
-    }
+        public int getR_id() {
+            return r_id;
+        }
 
-    public void setState_id(String state_id) {
-        this.state_id = state_id;
-    }
+        public void setR_id(int r_id) {
+            this.r_id = r_id;
+        }
 
-    public String getCity_id() {
-        return city_id;
-    }
+        public int getL_id() {
+            return l_id;
+        }
 
-    public void setCity_id(String city_id) {
-        this.city_id = city_id;
-    }
+        public void setL_id(int l_id) {
+            this.l_id = l_id;
+        }
 
-    public String getArea_id() {
-        return area_id;
-    }
+        public String getF_name() {
+            return f_name;
+        }
 
-    public void setArea_id(String area_id) {
-        this.area_id = area_id;
-    }
+        public void setF_name(String f_name) {
+            this.f_name = f_name;
+        }
 
-    public String getPh_no() {
-        return ph_no;
-    }
+        public String getL_name() {
+            return l_name;
+        }
 
-    public void setPh_no(String ph_no) {
-        this.ph_no = ph_no;
-    }
+        public void setL_name(String l_name) {
+            this.l_name = l_name;
+        }
 
-    public String getEmail() {
-        return email;
-    }
+        public String getAddress() {
+            return address;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+        public void setAddress(String address) {
+            this.address = address;
+        }
 
-    public String getU_name() {
-        return u_name;
-    }
+        public String getState_name() {
+            return state_name;
+        }
 
-    public void setU_name(String u_name) {
-        this.u_name = u_name;
-    }
+        public void setState_name(String state_name) {
+            this.state_name = state_name;
+        }
 
-    public String getPsd() {
-        return psd;
-    }
+        public String getCity_name() {
+            return city_name;
+        }
 
-    public void setPsd(String psd) {
-        this.psd = psd;
-    }
+        public void setCity_name(String city_name) {
+            this.city_name = city_name;
+        }
 
-    public String getU_type() {
-        return u_type;
-    }
+        public String getArea_name() {
+            return area_name;
+        }
 
-    public void setU_type(String u_type) {
-        this.u_type = u_type;
-    }
+        public void setArea_name(String area_name) {
+            this.area_name = area_name;
+        }
 
-    public String getSec_id() {
-        return sec_id;
-    }
+        public String getPh_no() {
+            return ph_no;
+        }
 
-    public void setSec_id(String sec_id) {
-        this.sec_id = sec_id;
-    }
+        public void setPh_no(String ph_no) {
+            this.ph_no = ph_no;
+        }
 
-    public String getAns() {
-        return ans;
-    }
+        public String getEmail() {
+            return email;
+        }
 
-    public void setAns(String ans) {
-        this.ans = ans;
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getU_name() {
+            return u_name;
+        }
+
+        public void setU_name(String u_name) {
+            this.u_name = u_name;
+        }
+
+        public String getPsd() {
+            return psd;
+        }
+
+        public void setPsd(String psd) {
+            this.psd = psd;
+        }
+
+        public String getSec_id() {
+            return sec_id;
+        }
+
+        public void setSec_id(String sec_id) {
+            this.sec_id = sec_id;
+        }
+
+        public String getAns() {
+            return ans;
+        }
+
+        public void setAns(String ans) {
+            this.ans = ans;
+        }
     }
 }

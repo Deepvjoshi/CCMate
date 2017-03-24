@@ -1,10 +1,13 @@
 package com.khushi.win10.cottageclaiment;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,6 +33,7 @@ import com.khushi.win10.cottageclaiment.Model.StateModel;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -248,7 +252,7 @@ cityspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 Log.d("myapp","selected state Spinner: "+questionspinnerStr);
 
                 String answer = answerET.getText().toString();
-
+String djdjdj=getFile(R.drawable.common_full_open_on_phone);
 //                String cpstr = cpET.getText().toString();
 //                String genderstr = genderTV.getText().toString();
 //                {
@@ -305,7 +309,7 @@ cityspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     //String jsonRequest = String.valueOf(object);
 
                     String[] keys = new String[]{"mode", "f_name", "l_name","address","state_id","city_id","area_id","u_name","email","psd","ph_no","u_type","sec_id","ans","user_profile"};
-                    String[] values = new String[]{"cust_register",fnstr,lnstr,addressstr,statespinnerStr,cityspinnerStr,areaspinnerStr,unstr,emailstr,passwordstr,contactnostr,typespinnerStr,questionspinnerStr,answerstr,"12"};
+                    String[] values = new String[]{"cust_register",fnstr,lnstr,addressstr,statespinnerStr,cityspinnerStr,areaspinnerStr,unstr,emailstr,passwordstr,contactnostr,typespinnerStr,questionspinnerStr,answerstr,djdjdj};
                     String jsonRequest = Utils.createJsonRequest(keys, values);
                     String URL =  "http://vnurture.in/00findpg/admin/webservice.php";
                     new WebserviceCall(SignUp.this, URL, jsonRequest, "Sending Email", true, new AsyncResponse() {
@@ -330,7 +334,22 @@ cityspinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
-
+    public   static String getFile(int path){
+        Bitmap bm = null;
+        ByteArrayOutputStream baos = null;
+        byte[] b = null;
+        String encodeString = null;
+        try{
+            bm = BitmapFactory.decodeFile(String.valueOf(path));
+            baos = new ByteArrayOutputStream();
+            bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            b = baos.toByteArray();
+            encodeString = Base64.encodeToString(b, Base64.DEFAULT);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return encodeString;
+    }
     public static boolean isValidEmail(CharSequence target) {
         Pattern pattern;
         Matcher matcher;
