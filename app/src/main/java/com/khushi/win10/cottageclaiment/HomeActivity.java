@@ -20,12 +20,16 @@ import com.khushi.win10.cottageclaiment.AsyncTasks.WebserviceCall;
 import com.khushi.win10.cottageclaiment.Helper.Utils;
 import com.khushi.win10.cottageclaiment.Model.ForgetPasswordModel;
 import com.khushi.win10.cottageclaiment.Model.LogOutModel;
+import com.khushi.win10.cottageclaiment.Model.PgModel;
+import com.khushi.win10.cottageclaiment.Model.UpdateProfileModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     ListView listView;
+    List<PgModel.PgAppListBean>pgList=new ArrayList<PgModel.PgAppListBean>();
    // ListView listViewnews;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,26 @@ public class HomeActivity extends AppCompatActivity
         model2.setContent("This is a listview");
         ObjectHolder.newsModel.add(model2);*/
 
+
+        String[]keys=new String[]{"mode","state_id","city_id","area_id","l_id","pg_id"};
+        String[]values=new String[]{"findpg","1","1","1","9","1"};
+        String jsonRequest= Utils.createJsonRequest(keys,values);
+
+        String URL = "http://findpg.co.nf/admin/webservice.php";
+        new WebserviceCall(HomeActivity.this, URL, jsonRequest, "Updating Profile", true, new AsyncResponse() {
+            @Override
+            public void onCallback(String response) {
+                Log.d("myapp",response);
+                PgModel model = new Gson().fromJson(response,PgModel.class);
+              //  Toast.makeText(HomeActivity.this,model.getMessage() , Toast.LENGTH_SHORT).show();
+
+
+
+
+            }
+        }).execute();
+// String dj= pgList.get(0).getE_price();
+       // Log.d("dj",dj);
         listView=(ListView)findViewById(R.id.home_listview);
         ObjectHolder.rentDemoModel=new ArrayList<>();
         RentDemoModel model1=new RentDemoModel();
@@ -74,7 +98,15 @@ public class HomeActivity extends AppCompatActivity
         model1.setRating("rating");
         model1.setRank("4.6/5");
         model1.setPrice("Rs.10000");
+        RentDemoModel model12=new RentDemoModel();
+        model1.setImageViewCottage(R.drawable.mybg1);
+        model1.setName("Krishna Cottage");
+        model1.setLocation("Ahemdabad,Gujrat,India");
+        model1.setRating("rating");
+        model1.setRank("4.6/5");
+        model1.setPrice("Rs.10000");
         //arrayList.add(model);
+        ObjectHolder.rentDemoModel.add(model12);
         ObjectHolder.rentDemoModel.add(model1);
 
         CustomRentAdapter adapter = new CustomRentAdapter(this,ObjectHolder.rentDemoModel);

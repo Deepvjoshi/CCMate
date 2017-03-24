@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -15,13 +17,21 @@ import com.google.gson.Gson;
 import com.khushi.win10.cottageclaiment.AsyncTasks.AsyncResponse;
 import com.khushi.win10.cottageclaiment.AsyncTasks.WebserviceCall;
 import com.khushi.win10.cottageclaiment.Helper.Utils;
+import com.khushi.win10.cottageclaiment.Model.AreaModel;
 import com.khushi.win10.cottageclaiment.Model.ForgetPasswordModel;
+import com.khushi.win10.cottageclaiment.Model.StateModel;
 import com.khushi.win10.cottageclaiment.Model.UpdateProfileModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.khushi.win10.cottageclaiment.SignUp.isValidEmail;
 
 public class UpdateAccountActivity extends AppCompatActivity {
      private Button btnupdate,btncancle;
+    List<StateModel.CityListBean> CityList=new ArrayList<StateModel.CityListBean>();
+    List<AreaModel.AreaListBean> AreaList=new ArrayList<AreaModel.AreaListBean>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +49,126 @@ public class UpdateAccountActivity extends AppCompatActivity {
         final EditText ETcontactnumber = (EditText) findViewById(R.id.update_et_contactnumber);
 
 
+
+        ArrayAdapter<CharSequence> adaptertype = ArrayAdapter.createFromResource(this, R.array.Select_State, android.R.layout.simple_spinner_item);
+        adaptertype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerstate.setAdapter(adaptertype);
+spinnerstate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        final int dj= (int) parent.getItemIdAtPosition(position);
+        Log.d("tag", String.valueOf(parent.getItemIdAtPosition(position)));
+
+
+
+
+        String[] keys = new String[]{"mode","state_id"};
+        String[] values = new String[]{"cityViewByState", String.valueOf(dj)};
+        final String jsonRequest = Utils.createJsonRequest(keys, values);
+        final String URL =  "http://vnurture.in/00findpg/admin/webservice.php";
+//                new WebserviceCall(SignUp.this, URL, jsonRequest, "Sending Email", true, new AsyncResponse() {
+//                    @Override
+//                    public void onCallback(String response) {
+//                        Log.d("myapp",response);
+//                        StateModel model = new Gson().fromJson(response,StateModel.class);
+//                      //  Toast.makeText(SignUp.this,model.getMessage() , Toast.LENGTH_SHORT).show();
+//
+//                    }
+//                }).execute();
+//                String djs[] = new String[CityList.size()];
+//                for (int i=0;i<CityList.size();i++){
+//                    djs[i]=CityList.get(i).getCity_name();
+//                    Log.d("dj","djj"+djs[i]);
+//
+//                }
+        new WebserviceCall(UpdateAccountActivity.this, URL, jsonRequest, "Sending Email", true, new AsyncResponse() {
+            @Override
+            public void onCallback(String response) {
+                Log.d("myapp",response);
+
+                StateModel model = new Gson().fromJson(response,StateModel.class);
+                CityList=model.getCityList();
+
+
+                if(model.getStatus()==1)
+                {
+                    String djs[] = new String[CityList.size()];
+                    for (int i=0;i<CityList.size();i++){
+                        djs[i]=CityList.get(i).getCity_name();
+                        Log.d("tag","djj"+djs[i]);
+
+                    }
+                    ArrayAdapter<CharSequence> adaptertype =  new ArrayAdapter(UpdateAccountActivity.this,android.R.layout.simple_list_item_1,djs);
+                    adaptertype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinnercity.setAdapter(adaptertype);
+                    //  Toast.makeText(SignUp.this,model.getMessage() , Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+        }).execute();
+        spinnercity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int djs= (int) parent.getItemIdAtPosition(position);
+
+                String[] keys = new String[]{"mode","state_id","city_id"};
+                String[] values = new String[]{"areaViewByStateCity", String.valueOf(dj),String.valueOf(djs)};
+                String jsonRequest = Utils.createJsonRequest(keys, values);
+                String URL =  "http://vnurture.in/00findpg/admin/webservice.php";
+
+                new WebserviceCall(UpdateAccountActivity.this, URL, jsonRequest, "Sending Email", true, new AsyncResponse() {
+                    @Override
+                    public void onCallback(String response) {
+                        Log.d("myappArea",response);
+
+                        AreaModel model = new Gson().fromJson(response,AreaModel.class);
+                        AreaList=model.getAreaList();
+
+
+                        if(model.getStatus()==1)
+                        {
+                            String djs[] = new String[AreaList.size()];
+                            for (int i=0;i<AreaList.size();i++){
+                                djs[i]=AreaList.get(i).getArea_name();
+                                Log.d("tag","djj"+djs[i]);
+
+                            }
+                            ArrayAdapter<CharSequence> adaptertype =  new ArrayAdapter(UpdateAccountActivity.this,android.R.layout.simple_list_item_1,djs);
+                            adaptertype.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spinnerarea.setAdapter(adaptertype);
+                            //  Toast.makeText(SignUp.this,model.getMessage() , Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                }).execute();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        spinnerarea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                int djsa= (int) parent.getItemIdAtPosition(position);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+});
 
         btnupdate = (Button) findViewById(R.id.btn_update);
         btnupdate.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +216,7 @@ public class UpdateAccountActivity extends AppCompatActivity {
 
 
                     String[]keys=new String[]{"mode","r_id","f_name","l_name","address","state_id","city_id","area_id","email","ph_no"};
-                    String[]values=new String[]{"update_profile","25",strfn,strln,straddress,stremail,strcontactno};
+                    String[]values=new String[]{"update_profile","25",strfn,strln,straddress, String.valueOf(statespinnerStr), String.valueOf(cityspinnerStr), String.valueOf(areaspinnerStr),stremail,strcontactno};
                     String jsonRequest= Utils.createJsonRequest(keys,values);
 
                     String URL = "http://findpg.co.nf/admin/webservice.php";

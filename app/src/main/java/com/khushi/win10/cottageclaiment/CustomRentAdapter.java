@@ -63,9 +63,7 @@ public class CustomRentAdapter extends BaseAdapter {
             holder=new ViewHolder();
             convertView = LayoutInflater.from(context).inflate(R.layout.single_row_rent, parent, false);
             holder.textname=(TextView)convertView.findViewById(R.id.row_rent_cottagename);
-            holder.textlocation=(TextView)convertView.findViewById(R.id.row_rent_location);
-            holder.textrating=(TextView)convertView.findViewById(R.id.row_rent_ratings);
-            holder.textrank=(TextView)convertView.findViewById(R.id.row_rent_rank);
+           holder.textrank=(TextView)convertView.findViewById(R.id.row_rent_rank);
             holder.textprice=(TextView)convertView.findViewById(R.id.row_rent_price);
             holder.imageView=(ImageView)convertView.findViewById(R.id.row_rent_image);
             convertView.setTag(holder);
@@ -74,11 +72,11 @@ public class CustomRentAdapter extends BaseAdapter {
             holder=(ViewHolder)convertView.getTag();
         }
         holder.imageView.setImageResource(rentDetailsList.get(position).getImageViewCottage());
+  //      holder.textlocation.setText(rentDetailsList.get(position).getLocation());
+     //   holder.textrating.setText(rentDetailsList.get(position).getRating());
         holder.textname.setText(rentDetailsList.get(position).getName());
-        holder.textlocation.setText(rentDetailsList.get(position).getLocation());
-        holder.textrating.setText(rentDetailsList.get(position).getRating());
         holder.textrank.setText(rentDetailsList.get(position).getRank());
-        holder.textprice.setText(rentDetailsList.get(position).getPrice());
+       holder.textprice.setText(rentDetailsList.get(position).getPrice());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
